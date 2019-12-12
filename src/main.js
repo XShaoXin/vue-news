@@ -7,6 +7,10 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
+//导入 vue-resource
+import VueResource from 'vue-resource'
+Vue.use(VueResource)
+
 //导入MUI
 import  './lib/mui/css/mui.min.css'
 

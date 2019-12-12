@@ -40,7 +40,13 @@ module.exports = {
       // }, // 配置处理 .scss 文件的 第三方 loader 规则
       {
         test: /\.(jpg|png|gif|bmp|jpeg)$/,
-        use: 'url-loader?limit=7631&name=[hash:8]-[name].[ext]'
+        use: [{
+          loader: 'url-loader',
+          options: {
+            limit: 1024 * 1,
+            esModule: false
+          }
+        }]
       }, // 处理 图片路径的 loader
       // limit 给定的值，是图片的大小，单位是 byte， 如果我们引用的 图片，大于或等于给定的 limit值，则不会被转为base64格式的字符串， 如果 图片小于给定的 limit 值，则会被转为 base64的字符串
       {

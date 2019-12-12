@@ -5,6 +5,7 @@ import ShopcarComponent from './components/tabber/ShopcarComponent.vue';
 import SearchCompontent from './components/tabber/SearchCompontent.vue';
 var router = new VueRouter({
   routes: [
+    {path: '/', redirect:'/home'},
     {path: '/home', component: HomeCompontent},
     {path: '/member', component: MemberCompontent},
     {path: '/shopcar', component: ShopcarComponent},
