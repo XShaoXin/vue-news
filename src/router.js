@@ -1,8 +1,10 @@
 import VueRouter from 'vue-router'
-import HomeCompontent from './components/tabber/HomeComponent.vue';
-import MemberCompontent from './components/tabber/MemberCompontent.vue';
-import ShopcarComponent from './components/tabber/ShopcarComponent.vue';
-import SearchCompontent from './components/tabber/SearchCompontent.vue';
+import HomeCompontent from './components/tabber/HomeComponent.vue'
+import MemberCompontent from './components/tabber/MemberCompontent.vue'
+import ShopcarComponent from './components/tabber/ShopcarComponent.vue'
+import SearchCompontent from './components/tabber/SearchCompontent.vue'
+import NewsList from './components/news/NewsList.vue'
+import NewsInfo from './components/news/NewsInfo.vue'
 var router = new VueRouter({
   routes: [
     {path: '/', redirect:'/home'},
@@ -10,6 +12,8 @@ var router = new VueRouter({
     {path: '/member', component: MemberCompontent},
     {path: '/shopcar', component: ShopcarComponent},
     {path: '/search', component: SearchCompontent},
+    {path: '/home/newslist', component: NewsList},
+    {path: '/home/newslist/:id', component: NewsInfo }
   ],
   //路由高亮
   linkActiveClass: 'mui-active'
