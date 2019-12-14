@@ -24,19 +24,24 @@ Vue.filter('dateFormat', function (dataStr, pattern = "YYYY-MM-DD HH:mm:ss") {
 
 //导入MUI
 import './lib/mui/css/mui.min.css'
+import './lib/mui/css/icons-extra.css'
 
 //导入mintUI
-import {
-  Header,
-  Swipe,
-  SwipeItem,
-  Button
-} from 'mint-ui'
-import './lib/mui/css/icons-extra.css'
+//按需导入
+import {Header, Swipe, SwipeItem, Button, Lazyload} from 'mint-ui'
 Vue.component(Header.name, Header)
 Vue.component(Swipe.name, Swipe)
 Vue.component(SwipeItem.name, SwipeItem)
 Vue.component(Button.name, Button)
+Vue.use(Lazyload);
+//全部导入
+// import MintUI from 'mint-ui'
+// import 'mint-ui/lib/style.css'
+// Vue.use(MintUI)
+
+//导入VuePreview图片阅览插件
+import VuePreview from 'vue-preview'
+Vue.use(VuePreview)
 
 // 导入 app, router组件
 import app from './App.vue'

@@ -1,10 +1,23 @@
 {
   "presets": [
-    "@babel/preset-env"
+    [
+      "@babel/preset-env",
+      {
+        "modules": false
+      }
+    ]
   ],
   "plugins": [
     "@babel/plugin-transform-runtime",
     "@babel/plugin-proposal-class-properties",
+    //取消严格模式
+    // [
+    //   "@babel/plugin-transform-modules-commonjs",
+    //   {
+    //     "strictMode": false
+    //   }
+    // ],
+    //按需导入mintui
     [
       "component",
       {
@@ -12,5 +25,9 @@
         "style": true
       }
     ]
+  ],
+  //编译时忽略mui.min.js
+  "ignore": [
+    "./src/lib/mui/js/mui.min.js"
   ]
 }
