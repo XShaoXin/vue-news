@@ -12,6 +12,8 @@ import VueResource from 'vue-resource'
 Vue.use(VueResource)
 // 设置请求的根路径
 Vue.http.options.root = 'http://www.liulongbin.top:3005'
+//  全局启用emulateJSON 选项
+Vue.http.options.emulateJSON = true
 
 // 导入格式化时间的插件
 import moment from 'moment'
@@ -21,10 +23,15 @@ Vue.filter('dateFormat', function (dataStr, pattern = "YYYY-MM-DD HH:mm:ss") {
 })
 
 //导入MUI
-import  './lib/mui/css/mui.min.css'
+import './lib/mui/css/mui.min.css'
 
 //导入mintUI
-import { Header, Swipe, SwipeItem, Button} from 'mint-ui'
+import {
+  Header,
+  Swipe,
+  SwipeItem,
+  Button
+} from 'mint-ui'
 import './lib/mui/css/icons-extra.css'
 Vue.component(Header.name, Header)
 Vue.component(Swipe.name, Swipe)
@@ -37,8 +44,7 @@ import router from './router.js'
 
 var vm = new Vue({
   el: '#app',
-  data: {
-  },
+  data: {},
   render: c => c(app),
   router
 })
