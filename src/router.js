@@ -7,6 +7,10 @@ import NewsList from './components/news/NewsList.vue'
 import NewsInfo from './components/news/NewsInfo.vue'
 import PhotoList from './components/photo/PhotoList.vue'
 import PhotoInfo from './components/photo/PhotoInfo.vue'
+import GoodsList from './components/goods/GoodsList.vue';
+import GoodsInfo from './components/goods/GoodsInfo.vue';
+import GoodsDese from './components/goods/GoodsDese.vue';
+import GoodsComment from './components/goods/GoodsComment.vue';
 var router = new VueRouter({
   routes: [
     {path: '/', redirect:'/home'},
@@ -17,7 +21,11 @@ var router = new VueRouter({
     {path: '/home/newslist', component: NewsList},
     {path: '/home/newslist/:id', component: NewsInfo },
     {path: '/home/photolist', component: PhotoList},
-    {path: '/home/photoinfo/:id', component: PhotoInfo}
+    {path: '/home/photoinfo/:id', component: PhotoInfo},
+    {path: '/home/goodslist', component: GoodsList},
+    {path: '/home/goodsinfo/:id', component: GoodsInfo, name: 'goodsinfo'},
+    {path: '/home/goodsdese/:id', component: GoodsDese, name: 'goodsdese'},
+    {path: '/home/goodscomment/:id', component: GoodsComment, name: 'goodscomment'}
   ],
   //路由高亮
   linkActiveClass: 'mui-active'
