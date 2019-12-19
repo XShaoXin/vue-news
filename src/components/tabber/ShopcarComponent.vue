@@ -35,7 +35,7 @@
               <span class="red">{{$store.getters.getGoodsCountAndAmount.amount}}</span>
             </p>
           </div>
-          <mt-button type="danger">去结算</mt-button>
+          <mt-button type="danger" @click="payment">去结算</mt-button>
         </div>
       </div>
     </div>
@@ -45,7 +45,9 @@
 </template>
 
 <script>
+import { Toast } from "mint-ui"
 import numbox from "../subcomponents/shopcar_numbox.vue";
+import { format } from 'path';
 
 export default {
   data() {
@@ -58,10 +60,10 @@ export default {
   },
   methods: {
     getGoodsList() {
-      // 1. 获取到 store 中所有的商品的Id，然后拼接出一个 用逗号分隔的 字符串
+      // 1. 获取到 store 中所有的商品的Id
       var idArr = [];
       this.$store.state.car.forEach(item => idArr.push(item.id));
-      // 如果 购物车中没有商品，则直接返回，不需要请求数据接口，否则会报错
+      // 如果 购物车中没有商品，则直接返回，不需要请求数据接口
       if (idArr.length <= 0) {
         return;
       }
@@ -83,6 +85,10 @@ export default {
       // 每当点击开关，把最新的 快关状态，同步到 store 中
       // console.log(id + " --- " + val);
       this.$store.commit("updateGoodsSelected", { id, selected: val });
+    },
+    payment(){
+      console.log('click payment');
+      // this.goodslist.
     }
   },
   components: {

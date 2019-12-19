@@ -11,6 +11,12 @@ Vue.use(VueRouter)
 import Vuex from 'vuex';
 Vue.use(Vuex)
 
+//导入axiox
+// import axios from 'axios'
+// import VueAxios from 'vue-axios'
+// Vue.use(VueAxios, axios)
+// axios.defaults.baseURL = 'http://www.liulongbin.top:3005'
+
 //导入 vue-resource
 import VueResource from 'vue-resource'
 Vue.use(VueResource)

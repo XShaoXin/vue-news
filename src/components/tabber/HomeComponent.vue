@@ -22,30 +22,12 @@
           <div class="mui-media-body">商品购买</div>
         </router-link>
       </li>
-      <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-        <a href="#">
-          <img src="../../images/menu4.png" alt />
-          <div class="mui-media-body">留言反馈</div>
-        </a>
-      </li>
-      <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-        <a href="#">
-          <img src="../../images/menu5.png" alt />
-          <div class="mui-media-body">视频专区</div>
-        </a>
-      </li>
-      <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-        <a href="#">
-          <img src="../../images/menu6.png" alt />
-          <div class="mui-media-body">联系我们</div>
-        </a>
-      </li>
     </ul>
   </div>
 </template>
 <script>
 import { Toast } from "mint-ui";
-import swiper from "../subcomponents/swiper.vue"
+import swiper from "../subcomponents/swiper.vue";
 export default {
   data() {
     return {
@@ -68,15 +50,26 @@ export default {
             Toast("获取轮播图失败");
           }
         });
+
+      // this.axios
+      //   .get("/api/getlunbo")
+      //   .then(response => {
+      //     // console.log(response);
+      //     // Toast('成功')        
+      //     this.LunBoTuList = response.data.message;
+      //     }
+      //   )
+      //   .catch(() =>{
+      //     Toast("获取轮播图失败");
+      //   })
     }
   },
-  components:{
+  components: {
     swiper
   }
 };
 </script>
 <style  scoped>
-
 /* 6宫格 */
 .mui-grid-view.mui-grid-9 {
   background-color: #fff;
