@@ -2,7 +2,7 @@
   <div class="shopcar-container">
     <div class="goods-list">
       <!-- 商品列表项区域 -->
-      <div class="mui-card" v-for="(item, i) in goodslist" :key="item.id">
+      <div class="mui-card" v-for="(item, i) in goodslist" :key="i">
         <div class="mui-card-content">
           <div class="mui-card-content-inner">
             <mt-switch
@@ -45,9 +45,9 @@
 </template>
 
 <script>
-import { Toast } from "mint-ui"
+import { Toast } from "mint-ui";
 import numbox from "../subcomponents/shopcar_numbox.vue";
-import { format } from 'path';
+import { format } from "path";
 
 export default {
   data() {
@@ -73,6 +73,11 @@ export default {
         .then(result => {
           if (result.body.status === 0) {
             this.goodslist = result.body.message;
+            this.goodslist.forEach((item, i) => {
+              item.selected = JSON.parse(localStorage.getItem("car"))[
+                i
+              ].selected;
+            });
           }
         });
     },
@@ -84,11 +89,24 @@ export default {
     selectedChanged(id, val) {
       // 每当点击开关，把最新的 快关状态，同步到 store 中
       // console.log(id + " --- " + val);
+      this.goodslist.some(item => {
+        if (item.id == id) {
+          item.selected = val;
+          return true;
+        }
+      });
       this.$store.commit("updateGoodsSelected", { id, selected: val });
     },
-    payment(){
-      console.log('click payment');
-      // this.goodslist.
+    payment() {
+      //结算
+      // console.log("click payment");
+      if (this.goodslist.length == 0) {
+        Toast("购物车没有商品");
+        return;
+      }
+      this.goodslist = this.goodslist.filter(item => !item.selected)
+      this.$store.commit("payment");
+      Toast("付款成功");
     }
   },
   components: {

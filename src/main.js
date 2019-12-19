@@ -60,6 +60,8 @@ Vue.filter('dateFormat', function (dataStr, pattern = "YYYY-MM-DD HH:mm:ss") {
 })
 
 var car = JSON.parse(localStorage.getItem('car') || '[]')
+console.log(car);
+
 //注册vuex
 const store = new Vuex.Store({
   state:{
@@ -107,8 +109,15 @@ const store = new Vuex.Store({
       state.car.some(item => {
         if (item.id == info.id) {
           item.selected = info.selected
+          return true;
         }
       })
+      // 把最新的 所有购物车商品的状态保存到 store 中去
+      localStorage.setItem('car', JSON.stringify(state.car))
+    },
+    payment(state) {
+      console.log(state.car)
+      state.car = state.car.filter(item => !item.selected)
       // 把最新的 所有购物车商品的状态保存到 store 中去
       localStorage.setItem('car', JSON.stringify(state.car))
     }
