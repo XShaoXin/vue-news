@@ -58,6 +58,9 @@ export default {
   created() {
     this.getGoodsList();
   },
+  updated(){
+    console.log(111);
+  },
   methods: {
     getGoodsList() {
       // 1. 获取到 store 中所有的商品的Id
@@ -104,8 +107,8 @@ export default {
         Toast("购物车没有商品");
         return;
       }
-      this.goodslist = this.goodslist.filter(item => !item.selected)
       this.$store.commit("payment");
+      this.goodslist = this.goodslist.filter(item => !item.selected)
       Toast("付款成功");
     }
   },
